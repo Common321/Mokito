@@ -1,0 +1,140 @@
+<dependency>  
+    <groupId>junit</groupId>  
+    <artifactId>junit</artifactId>  
+    <version>4.13-rc-1</version>  
+    <scope>test</scope>  
+</dependency>  
+  
+<dependency>  
+    <groupId>org.mockito</groupId>  
+    <artifactId>mockito-all</artifactId>  
+    <version>2.0.1-beta</version>  
+    <scope>test</scope>  
+</dependency>   
+
+
+@Mock
+CustomerLoginRepository customerLoginRepository;
+
+
+
+@InjectMocks
+CustomerLoginService customerLoginService =  new CustomerLoginServiceImpl();
+
+
+anyBoolean() - It  returns any boolean or Boolean value.
+
+anyInt() - It returns any integer or Integer value.
+
+anyFloat() - It returns any float or Float value.
+
+anyDouble() - It returns any double or Double value.
+
+anyLong() - It returns any long or Long value.
+
+any() - It returns any Object.
+
+
+
+
+
+
+
+
+
+Optional opt=Optional.of(planEntity);
+		
+		
+Optional opt1=Optional.empty();
+		
+		
+Mockito.when(planRepo.findById(Mockito.anyInt())).thenReturn(opt1);
+
+
+@Test
+	public void authenticateCustomerTestInValidCredentials()
+{
+	List<Plan> planList=new ArrayList<Plan>();
+		
+		
+	Plan planEntity=new Plan();
+		
+	planEntity.setPlanId(1);
+		
+	planEntity.setPlanName("IFY_60");
+		
+	planEntity.setLocalRate(60);
+		
+	planEntity.setNationalRate(60);
+		
+		
+	planList.add(planEntity);
+		
+		
+	Mockito.when(planRepo.findAll()).thenReturn(planList);
+		
+		
+	List<PlanDTO> rePlans= planService.getAllPlans();
+		
+	System.out.println(rePlans.get(0));
+		
+	Assertions.assertEquals(rePlans.isEmpty(), planList.isEmpty()
+
+
+}
+
+
+@Test
+public void authenticateCustomerTestInValidCredentials() 
+{
+	List<Plan> planList=new ArrayList<Plan>();
+		
+		
+	Plan planEntity=new Plan();
+		
+	planEntity.setPlanId(1);
+		
+	planEntity.setPlanName("IFY_60");
+		
+	planEntity.setLocalRate(60);
+		
+	planEntity.setNationalRate(60);
+		
+		
+	/*Optional opt=Optional.of(planEntity);//Valid
+		
+		
+	Optional opt1=Optional.empty();//Invalid
+		
+		
+	Mockito.when(planRepo.findById(Mockito.anyInt())).thenReturn(opt1);*/
+		
+		
+	Mockito.when(planRepo.findAll()).thenReturn(planList);
+									List<PlanDTO> rePlans= planService.getAllPlans();
+			
+	Assertions.assertEquals(rePlans.isEmpty(), planList.isEmpty());
+}
+
+
+
+
+
+
+
+
+mvn clean package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=<your organization name in sonar> -Dsonar.login=<the security token>
+
+
+
+
+
+
+SecretsManagerReadWriteAWS managed policy AmazonEC2ContainerRegistryPowerUserAWS managed policy AWSKeyManagementServicePowerUserAWS managed policy AWSCodeBuildAdminAccess
+
+
+
+
+
+
+AmazonRDSFullAccessAWS managed policy SecretsManagerReadWriteAWS managed policy AmazonEC2ContainerRegistryPowerUserAWS managed policy AmazonEC2ContainerServiceforEC2RoleAWS managed policy AWSKeyManagementServicePowerUser
